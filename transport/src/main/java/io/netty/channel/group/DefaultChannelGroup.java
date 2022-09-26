@@ -5,7 +5,7 @@
  * version 2.0 (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at:
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ *   https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
@@ -267,7 +267,7 @@ public class DefaultChannelGroup extends AbstractSet<Channel> implements Channel
             }
             future = voidFuture;
         } else {
-            Map<Channel, ChannelFuture> futures = new LinkedHashMap<Channel, ChannelFuture>(size());
+            Map<Channel, ChannelFuture> futures = new LinkedHashMap<Channel, ChannelFuture>(nonServerChannels.size());
             for (Channel c: nonServerChannels.values()) {
                 if (matcher.matches(c)) {
                     futures.put(c, c.write(safeDuplicate(message)));
@@ -400,7 +400,7 @@ public class DefaultChannelGroup extends AbstractSet<Channel> implements Channel
             }
             future = voidFuture;
         } else {
-            Map<Channel, ChannelFuture> futures = new LinkedHashMap<Channel, ChannelFuture>(size());
+            Map<Channel, ChannelFuture> futures = new LinkedHashMap<Channel, ChannelFuture>(nonServerChannels.size());
             for (Channel c: nonServerChannels.values()) {
                 if (matcher.matches(c)) {
                     futures.put(c, c.writeAndFlush(safeDuplicate(message)));

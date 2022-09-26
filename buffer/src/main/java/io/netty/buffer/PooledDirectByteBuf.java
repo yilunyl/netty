@@ -5,7 +5,7 @@
  * version 2.0 (the "License"); you may not use this file except in compliance
  * with the License. You may obtain a copy of the License at:
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ *   https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
@@ -260,7 +260,7 @@ final class PooledDirectByteBuf extends PooledByteBuf<ByteBuffer> {
         }
 
         index = idx(index);
-        tmpBuf.clear().position(index).limit(index + length);
+        tmpBuf.limit(index + length).position(index);
         tmpBuf.put(src);
         return this;
     }
@@ -274,7 +274,7 @@ final class PooledDirectByteBuf extends PooledByteBuf<ByteBuffer> {
             return readBytes;
         }
         ByteBuffer tmpBuf = internalNioBuffer();
-        tmpBuf.clear().position(idx(index));
+        tmpBuf.position(idx(index));
         tmpBuf.put(tmp, 0, readBytes);
         return readBytes;
     }
